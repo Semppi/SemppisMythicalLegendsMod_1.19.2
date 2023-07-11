@@ -27,6 +27,7 @@ import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 public class ColossalLobsterEntity extends Monster implements IAnimatable {
+    /// ToDo: Fix the depcracated function
     private AnimationFactory factory = new AnimationFactory(this);
 
     public ColossalLobsterEntity(EntityType<? extends Monster> pEntityType, Level pLevel) {
