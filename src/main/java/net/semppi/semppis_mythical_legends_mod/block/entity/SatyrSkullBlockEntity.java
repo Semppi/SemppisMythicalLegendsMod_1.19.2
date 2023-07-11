@@ -15,6 +15,7 @@ public class SatyrSkullBlockEntity extends BlockEntity {
 
     @Override
     public @NotNull ModelData getModelData() {
+        /// TODO: We need to implement here the code to load the textures and json file with the mod
         return super.getModelData();
     }
 
