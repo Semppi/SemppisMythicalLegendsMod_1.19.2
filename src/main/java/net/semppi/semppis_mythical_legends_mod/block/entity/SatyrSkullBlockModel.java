@@ -1,4 +1,5 @@
 package net.semppi.semppis_mythical_legends_mod.block.entity;
+
 import net.minecraft.client.renderer.block.model.BlockModel;
 import net.minecraft.resources.ResourceLocation;
 import net.semppi.semppis_mythical_legends_mod.SemppisMythicalLegendsMod;

@@ -9,16 +9,13 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.NeutralMob;
 import java.util.UUID;
 
+import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
 import net.minecraft.world.entity.ai.util.GoalUtils;
 import net.minecraft.world.item.ItemStack;
 import java.util.Collection;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.FloatGoal;
-import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
-import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.animal.Animal;
@@ -113,7 +110,7 @@ public class SatyrEntity extends Animal implements IAnimatable, NeutralMob {
         return net.minecraft.world.entity.animal.Animal.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 16.0D)
                 .add(Attributes.ATTACK_DAMAGE, 3.0f)
-                .add(Attributes.ATTACK_SPEED, 1.0f)
+                .add(Attributes.ATTACK_SPEED, 1.2f)
                 .add(Attributes.MOVEMENT_SPEED, 0.4f)
                 .build();
     }
@@ -125,6 +122,8 @@ public class SatyrEntity extends Animal implements IAnimatable, NeutralMob {
         this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.2D, false));
         this.goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 1.0D));
         this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(6, new OpenDoorGoal(this,true));
+        applyOpenDoorsAbility();
 
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Rabbit.class, true));

@@ -41,6 +41,7 @@ public class ColossalLobsterEntity extends Monster implements IAnimatable {
                 .add(Attributes.ATTACK_SPEED, 1.0f)
                 .add(Attributes.MOVEMENT_SPEED, 0.2f).build();
     }
+    /// ToDo: Have the colossal lobster entity defend it's self and attack back if they are attacked by an entity
 
     @Override
     protected void registerGoals() {
