@@ -8,6 +8,9 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.NeutralMob;
 import java.util.UUID;
+
+import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
+import net.minecraft.world.entity.ai.util.GoalUtils;
 import net.minecraft.world.item.ItemStack;
 import java.util.Collection;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -37,6 +40,7 @@ import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 public class SatyrEntity extends Animal implements IAnimatable, NeutralMob {
+    /// ToDo: Fix the depcracated function
     private AnimationFactory factory = new AnimationFactory(this);
     private SatyrVariant variant = SatyrVariant.DEFAULT;
 
@@ -95,6 +99,7 @@ public class SatyrEntity extends Animal implements IAnimatable, NeutralMob {
     public boolean isBrown() {
         return this.variant == SatyrVariant.Brown;
     }
+    /// ToDo: Satyr seems to change its variant every time it's loaded in game or leaves render distance
 
     public void setVariant() {
         if (this.random.nextBoolean()) {
@@ -112,6 +117,7 @@ public class SatyrEntity extends Animal implements IAnimatable, NeutralMob {
                 .add(Attributes.MOVEMENT_SPEED, 0.4f)
                 .build();
     }
+    /// ToDo: Have the satyr entity defend it's self and attack back if they are attacked by an entity
 
     @Override
     protected void registerGoals() {
@@ -124,6 +130,13 @@ public class SatyrEntity extends Animal implements IAnimatable, NeutralMob {
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Rabbit.class, true));
         this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, AbstractVillager.class, false));
     }
+    private void applyOpenDoorsAbility() {
+        if (GoalUtils.hasGroundPathNavigation(this)) {
+            ((GroundPathNavigation)this.getNavigation()).setCanOpenDoors(true);
+        }
+
+    }
+    /// ToDo: Add the vanilla head tracking to the satyr entity
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         if (event.isMoving()) {
@@ -182,6 +195,7 @@ public class SatyrEntity extends Animal implements IAnimatable, NeutralMob {
     protected float getSoundVolume() {
         return 0.2F;
     }
+    /// ToDo: Add the looting enchantment effect to satyrs drop for humanoid flesh if killed with the looting enchant
 
     @Override
     protected void dropFromLootTable(DamageSource source, boolean causedByPlayer) {
