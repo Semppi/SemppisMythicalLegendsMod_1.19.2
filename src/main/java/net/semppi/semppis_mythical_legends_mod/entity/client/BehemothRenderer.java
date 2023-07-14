@@ -14,7 +14,7 @@ import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 public class BehemothRenderer extends GeoEntityRenderer<BehemothEntity> {
     public BehemothRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new BehemothModel());
-        this.shadowRadius = 1.0f;
+        this.shadowRadius = 2.0f;
     }
 
     @Override
@@ -27,6 +27,7 @@ public class BehemothRenderer extends GeoEntityRenderer<BehemothEntity> {
                                     @Nullable MultiBufferSource renderTypeBuffer,
                                     @Nullable VertexConsumer vertexBuilder, int packedLightIn,
                                     ResourceLocation textureLocation) {
+        stack.scale(2.5f, 2.5f, 2.5f);
 
         return super.getRenderType(animatable, partialTicks, stack, renderTypeBuffer, vertexBuilder, packedLightIn, textureLocation);
     }
