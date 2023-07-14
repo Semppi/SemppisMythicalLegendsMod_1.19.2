@@ -24,6 +24,7 @@ import net.semppi.semppis_mythical_legends_mod.block.ModBlocks;
 import net.semppi.semppis_mythical_legends_mod.block.entity.SatyrSkullBlockEntity;
 import net.semppi.semppis_mythical_legends_mod.client.renderer.SatyrSkullBlockRenderer;
 import net.semppi.semppis_mythical_legends_mod.entity.ModEntityTypes;
+import net.semppi.semppis_mythical_legends_mod.entity.client.BehemothRenderer;
 import net.semppi.semppis_mythical_legends_mod.entity.client.SatyrRenderer;
 import net.semppi.semppis_mythical_legends_mod.entity.client.ColossalLobsterRenderer;
 import net.semppi.semppis_mythical_legends_mod.item.ModItems;
@@ -80,6 +81,7 @@ public class SemppisMythicalLegendsMod {
         public static void onClientSetup(FMLClientSetupEvent event) {
             EntityRenderers.register(ModEntityTypes.SATYR.get(), SatyrRenderer::new);
             EntityRenderers.register(ModEntityTypes.COLOSSALLOBSTER.get(), ColossalLobsterRenderer::new);
+            EntityRenderers.register(ModEntityTypes.BEHEMOTH.get(), BehemothRenderer::new);
             BlockEntityRenderers.register(ModBlockEntities.SATYR_SKULL.get(), SatyrSkullBlockRenderer::new);
         }
     }

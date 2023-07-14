@@ -8,6 +8,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.semppi.semppis_mythical_legends_mod.SemppisMythicalLegendsMod;
+import net.semppi.semppis_mythical_legends_mod.entity.custom.BehemothEntity;
 import net.semppi.semppis_mythical_legends_mod.entity.custom.ColossalLobsterEntity;
 import net.semppi.semppis_mythical_legends_mod.entity.custom.SatyrEntity;
 
@@ -25,6 +26,12 @@ public class ModEntityTypes {
                     () -> EntityType.Builder.of(ColossalLobsterEntity::new, MobCategory.WATER_CREATURE)
                             .sized(1.7f, 2.3f)
                             .build(new ResourceLocation(SemppisMythicalLegendsMod.MOD_ID, "colossal_lobster").toString()));
+
+    public static final RegistryObject<EntityType<BehemothEntity>> BEHEMOTH =
+            ENTITY_TYPES.register("behemoth",
+                    () -> EntityType.Builder.of(BehemothEntity::new, MobCategory.MONSTER)
+                            .sized(1.7f, 2.3f)
+                            .build(new ResourceLocation(SemppisMythicalLegendsMod.MOD_ID, "behemoth").toString()));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

@@ -35,6 +35,10 @@ public class ModItems {
     public static final RegistryObject<Item> COLOSSAL_LOBSTER_SPAWN_EGG = ITEMS.register("colossal_lobster_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntityTypes.COLOSSALLOBSTER, 0x223227, 0xf08632,
                     new Item.Properties().tab(ModCreativeModeTab.SML_TAB)));
+
+    public static final RegistryObject<Item> BEHEMOTH_SPAWN_EGG = ITEMS.register("behemoth_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntityTypes.BEHEMOTH, 0x645137, 0x433420,
+                    new Item.Properties().tab(ModCreativeModeTab.SML_TAB)));
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
