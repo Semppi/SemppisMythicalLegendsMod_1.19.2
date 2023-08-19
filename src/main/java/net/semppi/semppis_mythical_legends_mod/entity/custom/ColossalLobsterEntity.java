@@ -39,7 +39,9 @@ public class ColossalLobsterEntity extends Monster implements IAnimatable {
                 .add(Attributes.MAX_HEALTH, 130.0D)
                 .add(Attributes.ATTACK_DAMAGE, 8.0f)
                 .add(Attributes.ATTACK_SPEED, 1.0f)
-                .add(Attributes.MOVEMENT_SPEED, 0.2f).build();
+                .add(Attributes.MOVEMENT_SPEED, 0.2f)
+                .add(Attributes.KNOCKBACK_RESISTANCE, 0.60D)
+                .build();
     }
     /// ToDo: Have the colossal lobster entity defend it's self and attack back if they are attacked by an entity
 

@@ -9,7 +9,7 @@ import software.bernie.geckolib3.model.AnimatedGeoModel;
 public class SatyrSkullBlockModel extends AnimatedGeoModel<SatyrSkullBlockEntity> {
     @Override
     public ResourceLocation getModelResource(SatyrSkullBlockEntity blockEntity){
-        return new ResourceLocation(SemppisMythicalLegendsMod.MOD_ID, "resources/assets/semppis_mythical_legends_mod/blockstates/satyr_skull.json");
+        return new ResourceLocation(SemppisMythicalLegendsMod.MOD_ID, "resources/assets/semppis_mythical_legends_mod/blockstates/satyr_skull_generic.json");
     }
     @Override
     public ResourceLocation getTextureResource(SatyrSkullBlockEntity blockEntity){

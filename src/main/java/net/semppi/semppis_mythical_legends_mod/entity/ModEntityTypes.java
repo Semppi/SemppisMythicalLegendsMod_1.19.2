@@ -30,7 +30,7 @@ public class ModEntityTypes {
     public static final RegistryObject<EntityType<BehemothEntity>> BEHEMOTH =
             ENTITY_TYPES.register("behemoth",
                     () -> EntityType.Builder.of(BehemothEntity::new, MobCategory.MONSTER)
-                            .sized(3.7f, 3.9f)
+                            .sized(9.0f, 8.5f)
                             .build(new ResourceLocation(SemppisMythicalLegendsMod.MOD_ID, "behemoth").toString()));
 
     public static void register(IEventBus eventBus) {

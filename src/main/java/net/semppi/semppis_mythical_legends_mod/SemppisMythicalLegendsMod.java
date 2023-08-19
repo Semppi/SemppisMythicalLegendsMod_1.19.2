@@ -64,6 +64,9 @@ public class SemppisMythicalLegendsMod {
             SpawnPlacements.register(ModEntityTypes.SATYR.get(),
                     SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                     Animal::checkAnimalSpawnRules);
+            SpawnPlacements.register(ModEntityTypes.BEHEMOTH.get(),
+                    SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                    Animal::checkAnimalSpawnRules);
         });
     }
 

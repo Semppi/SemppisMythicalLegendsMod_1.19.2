@@ -1,6 +1,7 @@
 package net.semppi.semppis_mythical_legends_mod.item;
 
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.BowlFoodItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -39,6 +40,14 @@ public class ModItems {
     public static final RegistryObject<Item> BEHEMOTH_SPAWN_EGG = ITEMS.register("behemoth_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntityTypes.BEHEMOTH, 0x645137, 0x433420,
                     new Item.Properties().tab(ModCreativeModeTab.SML_TAB)));
+
+    public static final RegistryObject<Item> PUKIS_SPAWN_EGG = ITEMS.register("pukis_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntityTypes.SATYR, 0x8b7f5f, 0xbbc609,
+                    new Item.Properties().tab(ModCreativeModeTab.SML_TAB)));
+
+    public static final RegistryObject<Item> COD_SOUP = ITEMS.register("cod_soup",
+            () -> new BowlFoodItem(new Item.Properties().tab(ModCreativeModeTab.SML_TAB)
+                    .food(new FoodProperties.Builder().nutrition(8).saturationMod(9.6f).build())));
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
