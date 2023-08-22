@@ -10,6 +10,7 @@ import net.minecraftforge.registries.RegistryObject;
 import net.semppi.semppis_mythical_legends_mod.SemppisMythicalLegendsMod;
 import net.semppi.semppis_mythical_legends_mod.entity.custom.BehemothEntity;
 import net.semppi.semppis_mythical_legends_mod.entity.custom.ColossalLobsterEntity;
+import net.semppi.semppis_mythical_legends_mod.entity.custom.PukisEntity;
 import net.semppi.semppis_mythical_legends_mod.entity.custom.SatyrEntity;
 
 public class ModEntityTypes {
@@ -32,6 +33,12 @@ public class ModEntityTypes {
                     () -> EntityType.Builder.of(BehemothEntity::new, MobCategory.MONSTER)
                             .sized(9.0f, 8.5f)
                             .build(new ResourceLocation(SemppisMythicalLegendsMod.MOD_ID, "behemoth").toString()));
+
+    public static final RegistryObject<EntityType<PukisEntity>> PUKIS =
+            ENTITY_TYPES.register("pukis",
+                    () -> EntityType.Builder.of(PukisEntity::new, MobCategory.MONSTER)
+                            .sized(1.5f, 2.0f)
+                            .build(new ResourceLocation(SemppisMythicalLegendsMod.MOD_ID, "pukis").toString()));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

@@ -25,6 +25,7 @@ import net.semppi.semppis_mythical_legends_mod.block.entity.SatyrSkullBlockEntit
 import net.semppi.semppis_mythical_legends_mod.client.renderer.SatyrSkullBlockRenderer;
 import net.semppi.semppis_mythical_legends_mod.entity.ModEntityTypes;
 import net.semppi.semppis_mythical_legends_mod.entity.client.BehemothRenderer;
+import net.semppi.semppis_mythical_legends_mod.entity.client.PukisRenderer;
 import net.semppi.semppis_mythical_legends_mod.entity.client.SatyrRenderer;
 import net.semppi.semppis_mythical_legends_mod.entity.client.ColossalLobsterRenderer;
 import net.semppi.semppis_mythical_legends_mod.item.ModItems;
@@ -67,6 +68,9 @@ public class SemppisMythicalLegendsMod {
             SpawnPlacements.register(ModEntityTypes.BEHEMOTH.get(),
                     SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                     Animal::checkAnimalSpawnRules);
+            SpawnPlacements.register(ModEntityTypes.PUKIS.get(),
+                    SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                    Animal::checkAnimalSpawnRules);
         });
     }
 
@@ -85,6 +89,7 @@ public class SemppisMythicalLegendsMod {
             EntityRenderers.register(ModEntityTypes.SATYR.get(), SatyrRenderer::new);
             EntityRenderers.register(ModEntityTypes.COLOSSALLOBSTER.get(), ColossalLobsterRenderer::new);
             EntityRenderers.register(ModEntityTypes.BEHEMOTH.get(), BehemothRenderer::new);
+            EntityRenderers.register(ModEntityTypes.PUKIS.get(), PukisRenderer::new);
             BlockEntityRenderers.register(ModBlockEntities.SATYR_SKULL.get(), SatyrSkullBlockRenderer::new);
         }
     }

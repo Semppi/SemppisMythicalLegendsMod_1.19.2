@@ -12,12 +12,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.entity.animal.IronGolem;
-import net.minecraft.world.entity.monster.Pillager;
-import net.minecraft.world.entity.monster.warden.Warden;
-import net.minecraft.world.entity.npc.AbstractVillager;
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.animal.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import software.bernie.geckolib3.core.IAnimatable;
@@ -30,7 +25,7 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import java.util.UUID;
 
-public class BehemothEntity extends Animal implements IAnimatable, NeutralMob {
+public class PukisEntity extends Animal implements IAnimatable, NeutralMob {
     /// ToDo: Fix the depcracated function
     private AnimationFactory factory = new AnimationFactory(this);
 
@@ -65,42 +60,40 @@ public class BehemothEntity extends Animal implements IAnimatable, NeutralMob {
         // Do nothing
     }
 
-    public BehemothEntity(EntityType<? extends Animal> pEntityType, Level pLevel) {
-        super(pEntityType, pLevel);
-    }
+    public PukisEntity(EntityType<? extends Animal> pEntityType, Level pLevel) {super(pEntityType, pLevel);}
 
     public static AttributeSupplier setAttributes() {
         return net.minecraft.world.entity.animal.Animal.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 1500.0D)
-                .add(Attributes.ATTACK_DAMAGE, 112.0f)
-                .add(Attributes.ATTACK_SPEED, 0.8f)
-                .add(Attributes.MOVEMENT_SPEED, 0.3f)
-                .add(Attributes.KNOCKBACK_RESISTANCE, 0.95D)
+                .add(Attributes.MAX_HEALTH, 90.0D)
+                .add(Attributes.ATTACK_DAMAGE, 8.0f)
+                .add(Attributes.ATTACK_SPEED, 1.5f)
+                .add(Attributes.MOVEMENT_SPEED, 0.6f)
+                .add(Attributes.KNOCKBACK_RESISTANCE, 0.30D)
                 .build();
     }
-    /// ToDo: Have the behemoth entity defend it's self and attack back if they are attacked by an entity
+    /// ToDo: Have the pukis entity defend it's self and attack back if they are attacked by an entity
 
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new FloatGoal(this));
         this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.2D, false));
-        this.goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 1.0D));
+        this.goalSelector.addGoal(3, new RandomStrollGoal(this, 1.0D));
         this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
 
-        this.targetSelector.addGoal(2, new CustomNearestAttackableTargetGoal<>(this, Player.class, true, false, 2));
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, AbstractVillager.class, false));
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Warden.class, true));
-        this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, Pillager.class, true));
-        this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, IronGolem.class, true));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Sheep.class, true));
+        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Fox.class, true));
+        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, AbstractFish.class, true));
+        this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, Rabbit.class, true));
+        this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, Chicken.class, true));
     }
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         if (event.isMoving()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.behemoth.walk", true));
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.pukis.walk", true));
             return PlayState.CONTINUE;
         }
 
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.behemoth.idle", true));
+        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.pukis.idle", true));
         return PlayState.CONTINUE;
     }
 
@@ -120,19 +113,19 @@ public class BehemothEntity extends Animal implements IAnimatable, NeutralMob {
     }
 
     protected SoundEvent getAmbientSound() {
-        return SoundEvents.RAVAGER_AMBIENT;
+        return SoundEvents.WITHER_AMBIENT;
     }
 
     protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
-        return SoundEvents.RAVAGER_HURT;
+        return SoundEvents.ENDER_DRAGON_HURT;
     }
 
     protected SoundEvent getDeathSound() {
-        return SoundEvents.RAVAGER_DEATH;
+        return SoundEvents.WITHER_DEATH;
     }
 
     protected float getSoundVolume() {
-        return 1.4F;
+        return 0.2F;
     }
 
 }

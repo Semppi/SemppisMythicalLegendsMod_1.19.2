@@ -7,6 +7,7 @@ import net.semppi.semppis_mythical_legends_mod.SemppisMythicalLegendsMod;
 import net.semppi.semppis_mythical_legends_mod.entity.ModEntityTypes;
 import net.semppi.semppis_mythical_legends_mod.entity.custom.BehemothEntity;
 import net.semppi.semppis_mythical_legends_mod.entity.custom.ColossalLobsterEntity;
+import net.semppi.semppis_mythical_legends_mod.entity.custom.PukisEntity;
 import net.semppi.semppis_mythical_legends_mod.entity.custom.SatyrEntity;
 
 public class ModEvents {
@@ -23,6 +24,7 @@ public class ModEvents {
             event.put(ModEntityTypes.SATYR.get(), SatyrEntity.setAttributes());
             event.put(ModEntityTypes.COLOSSALLOBSTER.get(), ColossalLobsterEntity.setAttributes());
             event.put(ModEntityTypes.BEHEMOTH.get(), BehemothEntity.setAttributes());
+            event.put(ModEntityTypes.PUKIS.get(), PukisEntity.setAttributes());
         }
     }
 }
