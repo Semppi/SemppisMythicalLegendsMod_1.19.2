@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "cookingtime": 100,
+  "experience": 0.35,
+  "ingredient": {
+    "item": "semppis_mythical_legends_mod:humanoid_flesh_chunk"
+  },
+  "result": "semppis_mythical_legends_mod:humanoid_steak_chunk"
+}

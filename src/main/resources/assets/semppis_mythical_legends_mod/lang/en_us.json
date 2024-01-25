@@ -3,13 +3,27 @@
   "item.semppis_mythical_legends_mod.humanoid_flesh": "Humanoid Flesh",
   "item.semppis_mythical_legends_mod.satyr_spawn_egg": "Satyr Spawn Egg",
   "item.semppis_mythical_legends_mod.humanoid_steak": "Humanoid Steak",
-  "block.semppis_mythical_legends_mod.satyr_skull": "Satyr Skull",
   "item.semppis_mythical_legends_mod.lobster_cricket_bucket": "Bucket of Lobster Cricket",
   "item.semppis_mythical_legends_mod.colossal_lobster_spawn_egg": "Colossal Lobster Spawn Egg",
   "item.semppis_mythical_legends_mod.behemoth_spawn_egg": "Behemoth Spawn Egg",
   "item.semppis_mythical_legends_mod.pukis_spawn_egg": "Pukis Spawn Egg",
   "item.semppis_mythical_legends_mod.cod_soup": "Cod Soup",
+  "item.semppis_mythical_legends_mod.ricotta_cheese": "Ricotta Cheese",
+  "item.semppis_mythical_legends_mod.nopale_paste": "Nopale Paste",
+  "item.semppis_mythical_legends_mod.humanoid_steak_piece": "Humanoid Steak Piece",
+  "item.semppis_mythical_legends_mod.humanoid_flesh_piece": "Humanoid Flesh Piece",
+  "item.semppis_mythical_legends_mod.humanoid_flesh_chunk": "Humanoid Flesh Chunk",
+  "item.semppis_mythical_legends_mod.humanoid_steak_chunk": "Humanoid Steak Chunk",
 
-  "itemGroup.smltab": "SML Items Tab",
-  "itemGroup.smlfoods": "SML Food Stuff"
+  "block.semppis_mythical_legends_mod.satyr_skull": "Satyr Skull",
+  "block.semppis_mythical_legends_mod.ricotta_cheese_wheel": "Ricotta Cheese Wheel",
+  "block.semppis_mythical_legends_mod.pukis_skull": "Pukis Skull",
+
+  "entity.semppis_mythical_legends_mod.behemoth": "Behemoth",
+  "entity.semppis_mythical_legends_mod.colossal_lobster": "Colossal Lobster",
+  "entity.semppis_mythical_legends_mod.pukis": "Pukis",
+  "entity.semppis_mythical_legends_mod.satyr": "Satyr",
+
+  "itemGroup.smlitem": "SML Items",
+  "itemGroup.smlfoodtab": "SML Food Stuff"
 }

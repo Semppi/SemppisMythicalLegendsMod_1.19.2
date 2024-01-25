@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "semppis_mythical_legends_mod:humanoid_steak"
+    }
+  ],
+  "result": {
+    "item": "semppis_mythical_legends_mod:humanoid_steak_piece",
+    "count": 4
+  }
+}

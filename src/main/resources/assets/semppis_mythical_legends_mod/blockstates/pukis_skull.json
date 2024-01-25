@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "semppis_mythical_legends_mod:block/pukis_skull"
+    },
+    "facing=south": {
+      "model": "semppis_mythical_legends_mod:block/pukis_skull",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "semppis_mythical_legends_mod:block/pukis_skull",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "semppis_mythical_legends_mod:block/pukis_skull",
+      "y": 90
+    }
+  }
+}

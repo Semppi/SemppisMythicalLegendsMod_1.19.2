@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "semppis_mythical_legends_mod:block/ricotta_cheese_wheel"
+    },
+    "facing=south": {
+      "model": "semppis_mythical_legends_mod:block/ricotta_cheese_wheel",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "semppis_mythical_legends_mod:block/ricotta_cheese_wheel",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "semppis_mythical_legends_mod:block/ricotta_cheese_wheel",
+      "y": 90
+    }
+  }
+}

@@ -1,23 +1,21 @@
 package net.semppi.semppis_mythical_legends_mod.entity.custom;
 
+import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.NeutralMob;
+import net.minecraft.world.entity.*;
+import java.util.Arrays;
 import java.util.UUID;
-
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
 import net.minecraft.world.entity.ai.util.GoalUtils;
 import net.minecraft.world.item.ItemStack;
-import java.util.Collection;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.entity.player.Player;
@@ -37,9 +35,9 @@ import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 public class SatyrEntity extends Animal implements IAnimatable, NeutralMob {
-    /// ToDo: Fix the depcracated function
+    /// ToDo: Fix the deprecated function
     private AnimationFactory factory = new AnimationFactory(this);
-    private SatyrVariant variant = SatyrVariant.DEFAULT;
+    private SatyrVariant variant;
 
     @Override
     public AgeableMob getBreedOffspring(ServerLevel world, AgeableMob ageableMob) {
@@ -90,7 +88,36 @@ public class SatyrEntity extends Animal implements IAnimatable, NeutralMob {
 
     public SatyrEntity(EntityType<? extends Animal> entityType, Level level) {
         super(entityType, level);
-        this.setVariant();
+        this.setVariantRandomly();
+    }
+
+    private void setVariantRandomly() {
+        // Check if the variant has been set
+        if (this.variant == null) {
+            // Define the weighted variants
+            SatyrVariant[] possibleVariants = {SatyrVariant.Black, SatyrVariant.Brown, SatyrVariant.Caramel};
+            int[] variantWeights = {1, 1, 1};
+            this.variant = selectRandomVariant(possibleVariants, variantWeights);
+        }
+    }
+
+    private SatyrVariant selectRandomVariant(SatyrVariant[] possibleVariants, int[] variantWeights) {
+        if (possibleVariants.length != variantWeights.length) {
+            throw new IllegalArgumentException("Arrays must have the same length");
+        }
+
+        int totalWeight = Arrays.stream(variantWeights).sum();
+        int randomWeight = random.nextInt(totalWeight);
+
+        for (int i = 0; i < possibleVariants.length; i++) {
+            if (randomWeight < variantWeights[i]) {
+                return possibleVariants[i];
+            }
+            randomWeight -= variantWeights[i];
+        }
+
+        // This should not happen, but return the last variant if it does
+        return possibleVariants[possibleVariants.length - 1];
     }
 
     public boolean isBrown() {
@@ -100,7 +127,7 @@ public class SatyrEntity extends Animal implements IAnimatable, NeutralMob {
 
     public void setVariant() {
         if (this.random.nextBoolean()) {
-            this.variant = SatyrVariant.DEFAULT;
+            this.variant = SatyrVariant.Black;
         } else {
             this.variant = SatyrVariant.Brown;
         }
@@ -135,7 +162,6 @@ public class SatyrEntity extends Animal implements IAnimatable, NeutralMob {
         }
 
     }
-    /// ToDo: Add the vanilla head tracking to the satyr entity
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         if (event.isMoving()) {
@@ -195,11 +221,12 @@ public class SatyrEntity extends Animal implements IAnimatable, NeutralMob {
         return 0.2F;
     }
     /// ToDo: Add the looting enchantment effect to satyrs drop for humanoid flesh if killed with the looting enchant
+    /// ToDo: Add humanoid flesh to drop humanoid steak if entity is burning for drop
 
     @Override
     protected void dropFromLootTable(DamageSource source, boolean causedByPlayer) {
         // Drop humanoid flesh
-        int dropCount = this.random.nextInt(3) + 1; // Randomly generate a number between 1 and 3
+        int dropCount = this.random.nextInt(2) + 1; // Randomly generate a number between 1 and 2
         for (int i = 0; i < dropCount; i++) {
             this.spawnAtLocation(new ItemStack(ModItems.HUMANOID_FLESH.get()));
         }

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "semppis_mythical_legends_mod:humanoid_flesh_chunk"
+    }
+  ],
+  "result": {
+    "item": "semppis_mythical_legends_mod:humanoid_flesh",
+    "count": 4
+  }
+}

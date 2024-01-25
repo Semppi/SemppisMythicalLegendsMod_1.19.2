@@ -31,7 +31,7 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 import java.util.UUID;
 
 public class BehemothEntity extends Animal implements IAnimatable, NeutralMob {
-    /// ToDo: Fix the depcracated function
+    /// ToDo: Fix the deprecated function
     private AnimationFactory factory = new AnimationFactory(this);
 
     @Override
@@ -116,7 +116,7 @@ public class BehemothEntity extends Animal implements IAnimatable, NeutralMob {
     }
 
     protected void playStepSound(BlockPos pos, BlockState blockIn) {
-        this.playSound(SoundEvents.COW_STEP, 0.15F, 1.0F);
+        this.playSound(SoundEvents.COW_STEP, 0.15F, 0.7F);
     }
 
     protected SoundEvent getAmbientSound() {
@@ -132,7 +132,7 @@ public class BehemothEntity extends Animal implements IAnimatable, NeutralMob {
     }
 
     protected float getSoundVolume() {
-        return 1.4F;
+        return 2.7F;
     }
 
 }

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "semppis_mythical_legends_mod:ricotta_cheese_wheel"
+    }
+  ],
+  "result": {
+    "item": "semppis_mythical_legends_mod:ricotta_cheese",
+    "count": 6
+  }
+}

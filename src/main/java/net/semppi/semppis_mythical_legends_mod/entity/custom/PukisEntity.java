@@ -10,11 +10,16 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.NeutralMob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.behavior.Swim;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.animal.*;
+import net.minecraft.world.entity.boss.wither.WitherBoss;
+import net.minecraft.world.entity.monster.*;
+import net.minecraft.world.entity.monster.warden.Warden;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import software.bernie.geckolib3.core.AnimationState;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -26,7 +31,7 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 import java.util.UUID;
 
 public class PukisEntity extends Animal implements IAnimatable, NeutralMob {
-    /// ToDo: Fix the depcracated function
+    /// ToDo: Fix the deprecated function
     private AnimationFactory factory = new AnimationFactory(this);
 
     @Override
@@ -67,7 +72,8 @@ public class PukisEntity extends Animal implements IAnimatable, NeutralMob {
                 .add(Attributes.MAX_HEALTH, 90.0D)
                 .add(Attributes.ATTACK_DAMAGE, 8.0f)
                 .add(Attributes.ATTACK_SPEED, 1.5f)
-                .add(Attributes.MOVEMENT_SPEED, 0.6f)
+                .add(Attributes.MOVEMENT_SPEED, 0.4f)
+                .add(Attributes.FLYING_SPEED, 0.2F)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 0.30D)
                 .build();
     }
@@ -75,16 +81,21 @@ public class PukisEntity extends Animal implements IAnimatable, NeutralMob {
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(1, new FloatGoal(this));
+        ///this.goalSelector.addGoal(1, new Swim(this));
         this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.2D, false));
         this.goalSelector.addGoal(3, new RandomStrollGoal(this, 1.0D));
-        this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
 
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Sheep.class, true));
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Fox.class, true));
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, AbstractFish.class, true));
-        this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, Rabbit.class, true));
-        this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, Chicken.class, true));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Pillager.class, true));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, WitherBoss.class, true));
+        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Ravager.class, true));
+        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Witch.class, true));
+        this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, Warden.class, true));
+        this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, Vindicator.class, true));
+        this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, Evoker.class, true));
+        this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, Vex.class, true));
+        this.targetSelector.addGoal(6, new NearestAttackableTargetGoal<>(this, Guardian.class, true));
+        this.targetSelector.addGoal(6, new NearestAttackableTargetGoal<>(this, ElderGuardian.class, true));
     }
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
@@ -97,10 +108,23 @@ public class PukisEntity extends Animal implements IAnimatable, NeutralMob {
         return PlayState.CONTINUE;
     }
 
+    private PlayState attackPredicate(AnimationEvent event) {
+        if (this.swinging && event.getController().getAnimationState().equals(AnimationState.Stopped)) {
+            event.getController().markNeedsReload();
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.pukis.bite", false));
+            this.swinging = false;
+        }
+
+
+        return PlayState.CONTINUE;
+    }
+
     @Override
     public void registerControllers(AnimationData data) {
         data.addAnimationController(new AnimationController(this, "controller",
                 0, this::predicate));
+        data.addAnimationController(new AnimationController(this, "attackController",
+                0, this::attackPredicate));
     }
 
     @Override
@@ -113,7 +137,7 @@ public class PukisEntity extends Animal implements IAnimatable, NeutralMob {
     }
 
     protected SoundEvent getAmbientSound() {
-        return SoundEvents.WITHER_AMBIENT;
+        return SoundEvents.ELDER_GUARDIAN_AMBIENT;
     }
 
     protected SoundEvent getHurtSound(DamageSource damageSourceIn) {

@@ -1,16 +1,21 @@
 package net.semppi.semppis_mythical_legends_mod.entity.client;
 
+import com.google.common.collect.Maps;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import net.minecraft.Util;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.semppi.semppis_mythical_legends_mod.SemppisMythicalLegendsMod;
 import net.semppi.semppis_mythical_legends_mod.entity.custom.SatyrEntity;
+import net.semppi.semppis_mythical_legends_mod.entity.variant.SatyrVariant;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
+
+import java.util.Map;
 
 public class SatyrRenderer extends GeoEntityRenderer<SatyrEntity> {
     public SatyrRenderer(EntityRendererProvider.Context renderManager) {
@@ -20,10 +25,13 @@ public class SatyrRenderer extends GeoEntityRenderer<SatyrEntity> {
 
     @Override
     public ResourceLocation getTextureLocation(SatyrEntity animatable) {
-        if (animatable.isBrown()) {
+        SatyrVariant variant = animatable.getSatyrVariant();
+        if (variant == SatyrVariant.Black) {
+            return new ResourceLocation(SemppisMythicalLegendsMod.MOD_ID, "textures/entity/satyr_black.png");
+        } else if (variant == SatyrVariant.Brown) {
             return new ResourceLocation(SemppisMythicalLegendsMod.MOD_ID, "textures/entity/satyr_brown.png");
         } else {
-            return new ResourceLocation(SemppisMythicalLegendsMod.MOD_ID, "textures/entity/satyr_black.png");
+            return new ResourceLocation(SemppisMythicalLegendsMod.MOD_ID, "textures/entity/satyr_caramel.png");
         }
     }
 
