@@ -1,6 +1,9 @@
 package net.semppi.semppis_mythical_legends_mod.block.custom;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.BlockParticleOption;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -32,8 +35,7 @@ public class PukisSkullBlock extends HorizontalDirectionalBlock {
         super(properties);
     }
 
-    private static final VoxelShape SHAPE =
-            Block.box(4, 0, 4, 12, 7, 12);
+    private static final VoxelShape SHAPE = Block.box(4, 0, 4, 12, 7, 12);
 
     @Override
     public VoxelShape getShape(BlockState p_60555_, BlockGetter p_60556_, BlockPos p_60557_, CollisionContext p_60558_) {
@@ -65,44 +67,22 @@ public class PukisSkullBlock extends HorizontalDirectionalBlock {
         ItemStack itemStack = player.getItemInHand(hand);
 
         if (itemStack.getItem() instanceof PickaxeItem) {
-            // Check if the item used is a pickaxe
-            if (player.isCreative()) {
-                // In Creative mode, no durability loss
-                dropItems(worldIn, pos);
-            } else {
-                // Calculate Unbreaking chance
-                int unbreakingLevel = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.UNBREAKING, itemStack);
-                boolean shouldDamage = true;
+            PickaxeHarvest.handlePickaxeAction(state, worldIn, pos, player, hand, hitResult);
 
-                if (unbreakingLevel > 0) {
-                    int damageRandom = worldIn.random.nextInt(100);
-                    if (damageRandom < (100 / (unbreakingLevel + 1))) {
-                        shouldDamage = false;
-                    }
-                }
+            worldIn.playSound(null, pos, SoundEvents.BONE_BLOCK_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
+            dropItems(worldIn, pos, state);
 
-                // Damage the pickaxe if needed
-                if (shouldDamage) {
-                    itemStack.hurtAndBreak(1, player, (entity) -> entity.broadcastBreakEvent(hand));
-                }
-
-                // Drop the items regardless of Unbreaking
-                dropItems(worldIn, pos);
-            }
-
-            worldIn.setBlock(pos, Blocks.AIR.defaultBlockState(), 3); // Destroy the block
-            worldIn.playSound(null, pos, SoundEvents.BONE_BLOCK_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F); // Play the breaking sound
             return InteractionResult.SUCCESS;
         }
+
         return InteractionResult.PASS;
     }
 
-    private void dropItems(Level worldIn, BlockPos pos) {
+    private void dropItems(Level worldIn, BlockPos pos, BlockState state) {
         if (worldIn instanceof ServerLevel) {
             ServerLevel serverWorld = (ServerLevel) worldIn;
             ItemStack boneMealStack = new ItemStack(Items.BONE_MEAL, 9);
 
-            // Drop the items at the block's position
             Block.popResource(serverWorld, pos, boneMealStack);
         }
     }

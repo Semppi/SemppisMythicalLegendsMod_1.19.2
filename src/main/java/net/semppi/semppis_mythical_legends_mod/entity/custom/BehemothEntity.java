@@ -73,7 +73,7 @@ public class BehemothEntity extends Animal implements IAnimatable, NeutralMob {
         return net.minecraft.world.entity.animal.Animal.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 1500.0D)
                 .add(Attributes.ATTACK_DAMAGE, 112.0f)
-                .add(Attributes.ATTACK_SPEED, 0.8f)
+                .add(Attributes.ATTACK_SPEED, 0.6f)
                 .add(Attributes.MOVEMENT_SPEED, 0.3f)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 0.95D)
                 .build();
@@ -132,7 +132,7 @@ public class BehemothEntity extends Animal implements IAnimatable, NeutralMob {
     }
 
     protected float getSoundVolume() {
-        return 2.7F;
+        return 5.2F;
     }
 
 }

@@ -9,6 +9,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.semppi.semppis_mythical_legends_mod.SemppisMythicalLegendsMod;
+import net.semppi.semppis_mythical_legends_mod.entity.custom.BehemothEntity;
 import net.semppi.semppis_mythical_legends_mod.entity.custom.SatyrEntity;
 import net.semppi.semppis_mythical_legends_mod.entity.variant.SatyrVariant;
 import org.jetbrains.annotations.Nullable;
@@ -26,9 +27,9 @@ public class SatyrRenderer extends GeoEntityRenderer<SatyrEntity> {
     @Override
     public ResourceLocation getTextureLocation(SatyrEntity animatable) {
         SatyrVariant variant = animatable.getSatyrVariant();
-        if (variant == SatyrVariant.Black) {
+        if (variant == SatyrVariant.BLACK) {
             return new ResourceLocation(SemppisMythicalLegendsMod.MOD_ID, "textures/entity/satyr_black.png");
-        } else if (variant == SatyrVariant.Brown) {
+        } else if (variant == SatyrVariant.BROWN) {
             return new ResourceLocation(SemppisMythicalLegendsMod.MOD_ID, "textures/entity/satyr_brown.png");
         } else {
             return new ResourceLocation(SemppisMythicalLegendsMod.MOD_ID, "textures/entity/satyr_caramel.png");
@@ -36,11 +37,15 @@ public class SatyrRenderer extends GeoEntityRenderer<SatyrEntity> {
     }
 
     @Override
-    public RenderType getRenderType(SatyrEntity animatable, float partialTick, PoseStack poseStack,
-                                    @Nullable MultiBufferSource bufferSource,
-                                    @Nullable VertexConsumer buffer, int packedLight,
-                                    ResourceLocation texture) {
+    public RenderType getRenderType(SatyrEntity animatable, float partialTicks, PoseStack stack,
+                                    @Nullable MultiBufferSource renderTypeBuffer,
+                                    @Nullable VertexConsumer vertexBuilder, int packedLightIn,
+                                    ResourceLocation textureLocation) {if(animatable.isBaby()) {
+        stack.scale(0.5F, 0.5F, 0.5F);
+    } else {
+        stack.scale(1.0F, 1.0F, 1.0F);
+    }
 
-        return super.getRenderType(animatable, partialTick, poseStack, bufferSource, buffer, packedLight, texture);
+        return super.getRenderType(animatable, partialTicks, stack, renderTypeBuffer, vertexBuilder, packedLightIn, textureLocation);
     }
 }

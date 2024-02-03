@@ -31,8 +31,12 @@ public class ModItems {
             () -> new ForgeSpawnEggItem(ModEntityTypes.COLOSSALLOBSTER, 0x223227, 0xf08632,
                     new Item.Properties().tab(ModCreativeModeTab.SML_ITEM)));
 
+    public static final RegistryObject<Item> MANDRAKE_SPAWN_EGG = ITEMS.register("mandrake_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntityTypes.MANDRAKE, 0x383226, 0x75713a,
+                    new Item.Properties().tab(ModCreativeModeTab.SML_ITEM)));
+
     public static final RegistryObject<Item> PUKIS_SPAWN_EGG = ITEMS.register("pukis_spawn_egg",
-            () -> new ForgeSpawnEggItem(ModEntityTypes.PUKIS, 0x3b3497, 0xbbc609,
+            () -> new ForgeSpawnEggItem(ModEntityTypes.PUKIS, 0x3b3497, 0x2c1830,
                     new Item.Properties().tab(ModCreativeModeTab.SML_ITEM)));
 
     public static final RegistryObject<Item> SATYR_SPAWN_EGG = ITEMS.register("satyr_spawn_egg",
@@ -43,6 +47,18 @@ public class ModItems {
             () -> new BowlFoodItem(new Item.Properties().tab(ModCreativeModeTab.SML_FOOD_TAB)
                     .food(new FoodProperties.Builder().nutrition(8).saturationMod(9.6f).build())));
 
+    public static final RegistryObject<Item> PORRIDGE = ITEMS.register("porridge",
+            () -> new BowlFoodItem(new Item.Properties().tab(ModCreativeModeTab.SML_FOOD_TAB)
+                    .food(new FoodProperties.Builder().nutrition(6).saturationMod(6.3f).build())));
+
+    public static final RegistryObject<Item> HONEYED_PORRIDGE = ITEMS.register("honeyed_porridge",
+            () -> new BowlFoodItem(new Item.Properties().tab(ModCreativeModeTab.SML_FOOD_TAB)
+                    .food(new FoodProperties.Builder().nutrition(12).saturationMod(7.5f).build())));
+
+    public static final RegistryObject<Item> CHOCOLATE_PORRIDGE = ITEMS.register("chocolate_porridge",
+            () -> new BowlFoodItem(new Item.Properties().tab(ModCreativeModeTab.SML_FOOD_TAB)
+                    .food(new FoodProperties.Builder().nutrition(6).saturationMod(6.3f).build())));
+
     public static final RegistryObject<Item> RICOTTA_CHEESE = ITEMS.register("ricotta_cheese",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.SML_FOOD_TAB)
                     .food(new FoodProperties.Builder().nutrition(2).saturationMod(1.0f).build())));
@@ -50,6 +66,10 @@ public class ModItems {
     public static final RegistryObject<Item> NOPALE_PASTE = ITEMS.register("nopale_paste",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.SML_FOOD_TAB)
                     .food(new FoodProperties.Builder().nutrition(2).saturationMod(1.4f).build())));
+
+    public static final RegistryObject<Item> NOPALE_PASTE_ON_BREAD = ITEMS.register("nopale_paste_on_bread",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.SML_FOOD_TAB)
+                    .food(new FoodProperties.Builder().nutrition(5).saturationMod(4.4f).build())));
 
     public static final RegistryObject<Item> HUMANOID_FLESH = ITEMS.register("humanoid_flesh",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.SML_FOOD_TAB)

@@ -6,10 +6,15 @@
   "item.semppis_mythical_legends_mod.lobster_cricket_bucket": "Bucket of Lobster Cricket",
   "item.semppis_mythical_legends_mod.colossal_lobster_spawn_egg": "Colossal Lobster Spawn Egg",
   "item.semppis_mythical_legends_mod.behemoth_spawn_egg": "Behemoth Spawn Egg",
+  "item.semppis_mythical_legends_mod.mandrake_spawn_egg": "Mandrake Spawn Egg",
   "item.semppis_mythical_legends_mod.pukis_spawn_egg": "Pukis Spawn Egg",
   "item.semppis_mythical_legends_mod.cod_soup": "Cod Soup",
   "item.semppis_mythical_legends_mod.ricotta_cheese": "Ricotta Cheese",
   "item.semppis_mythical_legends_mod.nopale_paste": "Nopale Paste",
+  "item.semppis_mythical_legends_mod.nopale_paste_on_bread": "Nopale Paste On Bread",
+  "item.semppis_mythical_legends_mod.porridge": "Porridge",
+  "item.semppis_mythical_legends_mod.honeyed_porridge": "Honeyed Porridge",
+  "item.semppis_mythical_legends_mod.chocolate_porridge": "Chocolate Porridge",
   "item.semppis_mythical_legends_mod.humanoid_steak_piece": "Humanoid Steak Piece",
   "item.semppis_mythical_legends_mod.humanoid_flesh_piece": "Humanoid Flesh Piece",
   "item.semppis_mythical_legends_mod.humanoid_flesh_chunk": "Humanoid Flesh Chunk",
@@ -21,6 +26,7 @@
 
   "entity.semppis_mythical_legends_mod.behemoth": "Behemoth",
   "entity.semppis_mythical_legends_mod.colossal_lobster": "Colossal Lobster",
+  "entity.semppis_mythical_legends_mod.mandrake": "Mandrake",
   "entity.semppis_mythical_legends_mod.pukis": "Pukis",
   "entity.semppis_mythical_legends_mod.satyr": "Satyr",
 

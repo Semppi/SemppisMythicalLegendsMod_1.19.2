@@ -5,10 +5,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.semppi.semppis_mythical_legends_mod.SemppisMythicalLegendsMod;
 import net.semppi.semppis_mythical_legends_mod.entity.ModEntityTypes;
-import net.semppi.semppis_mythical_legends_mod.entity.custom.BehemothEntity;
-import net.semppi.semppis_mythical_legends_mod.entity.custom.ColossalLobsterEntity;
-import net.semppi.semppis_mythical_legends_mod.entity.custom.PukisEntity;
-import net.semppi.semppis_mythical_legends_mod.entity.custom.SatyrEntity;
+import net.semppi.semppis_mythical_legends_mod.entity.custom.*;
 
 public class ModEvents {
     @Mod.EventBusSubscriber(modid = SemppisMythicalLegendsMod.MOD_ID)
@@ -25,6 +22,7 @@ public class ModEvents {
             event.put(ModEntityTypes.COLOSSALLOBSTER.get(), ColossalLobsterEntity.setAttributes());
             event.put(ModEntityTypes.BEHEMOTH.get(), BehemothEntity.setAttributes());
             event.put(ModEntityTypes.PUKIS.get(), PukisEntity.setAttributes());
+            event.put(ModEntityTypes.MANDRAKE.get(), MandrakeEntity.setAttributes());
         }
     }
 }

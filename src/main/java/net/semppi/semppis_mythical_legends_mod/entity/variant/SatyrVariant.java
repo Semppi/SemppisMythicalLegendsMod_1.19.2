@@ -4,9 +4,9 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 public enum SatyrVariant {
-    Black(0),
-    Brown(1),
-    Caramel(2);
+    BLACK(0),
+    BROWN(1),
+    CARAMEL(2);
 
     private static final SatyrVariant[] BY_ID = Arrays.stream(values()).sorted(Comparator.
             comparingInt(SatyrVariant::getId)).toArray(SatyrVariant[]::new);

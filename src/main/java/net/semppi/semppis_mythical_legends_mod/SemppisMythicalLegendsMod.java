@@ -16,10 +16,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 //import net.semppi.semppis_mythical_legends_mod.banneradditions.ModPatterns;
 import net.semppi.semppis_mythical_legends_mod.block.ModBlocks;
 import net.semppi.semppis_mythical_legends_mod.entity.ModEntityTypes;
-import net.semppi.semppis_mythical_legends_mod.entity.client.BehemothRenderer;
-import net.semppi.semppis_mythical_legends_mod.entity.client.PukisRenderer;
-import net.semppi.semppis_mythical_legends_mod.entity.client.SatyrRenderer;
-import net.semppi.semppis_mythical_legends_mod.entity.client.ColossalLobsterRenderer;
+import net.semppi.semppis_mythical_legends_mod.entity.client.*;
 import net.semppi.semppis_mythical_legends_mod.item.ModItems;
 import net.semppi.semppis_mythical_legends_mod.sound.ModSounds;
 import org.slf4j.Logger;
@@ -59,7 +56,7 @@ public class SemppisMythicalLegendsMod {
                     SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                     Animal::checkAnimalSpawnRules);
             SpawnPlacements.register(ModEntityTypes.PUKIS.get(),
-                    SpawnPlacements.Type.IN_WATER, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                    SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                     Animal::checkAnimalSpawnRules);
         });
     }
@@ -80,6 +77,7 @@ public class SemppisMythicalLegendsMod {
             EntityRenderers.register(ModEntityTypes.COLOSSALLOBSTER.get(), ColossalLobsterRenderer::new);
             EntityRenderers.register(ModEntityTypes.BEHEMOTH.get(), BehemothRenderer::new);
             EntityRenderers.register(ModEntityTypes.PUKIS.get(), PukisRenderer::new);
+            EntityRenderers.register(ModEntityTypes.MANDRAKE.get(), MandrakeRenderer::new);
         }
     }
 }

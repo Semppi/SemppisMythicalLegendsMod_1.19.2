@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "semppis_mythical_legends_mod:nopale_paste"
+    },
+    {
+      "item": "semppis_mythical_legends_mod:nopale_paste"
+    },
+    {
+      "item": "minecraft:bread"
+    }
+  ],
+  "result": {
+    "item": "semppis_mythical_legends_mod:nopale_paste_on_bread",
+    "count": 2
+  }
+}
