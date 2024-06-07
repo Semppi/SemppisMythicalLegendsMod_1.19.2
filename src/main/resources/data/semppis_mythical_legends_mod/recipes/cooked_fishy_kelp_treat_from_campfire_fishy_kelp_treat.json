@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "cookingtime": 600,
+  "experience": 0.35,
+  "ingredient": {
+    "item": "semppis_mythical_legends_mod:fishy_kelp_treat"
+  },
+  "result": "semppis_mythical_legends_mod:cooked_fishy_kelp_treat"
+}

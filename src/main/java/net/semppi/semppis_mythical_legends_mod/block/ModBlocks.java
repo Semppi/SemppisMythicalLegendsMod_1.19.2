@@ -14,6 +14,7 @@ import net.semppi.semppis_mythical_legends_mod.SemppisMythicalLegendsMod;
 import net.semppi.semppis_mythical_legends_mod.block.custom.PukisSkullBlock;
 import net.semppi.semppis_mythical_legends_mod.block.custom.RicottaCheeseWheelBlock;
 import net.semppi.semppis_mythical_legends_mod.block.custom.SatyrSkullBlock;
+import net.semppi.semppis_mythical_legends_mod.block.custom.SigilBlock;
 import net.semppi.semppis_mythical_legends_mod.item.ModCreativeModeTab;
 import net.semppi.semppis_mythical_legends_mod.item.ModItems;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
@@ -24,6 +25,10 @@ public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, SemppisMythicalLegendsMod.MOD_ID);
 
+    public static final RegistryObject<Block> PUKIS_SKULL = registerBlock("pukis_skull",
+            () -> new PukisSkullBlock(BlockBehaviour.Properties.of(Material.DECORATION)
+                    .strength(0.5f).noOcclusion()), ModCreativeModeTab.SML_ITEM);
+
     public static final RegistryObject<Block> SATYR_SKULL = registerBlock("satyr_skull",
             () -> new SatyrSkullBlock(BlockBehaviour.Properties.of(Material.DECORATION)
                     .strength(0.5f).noOcclusion()), ModCreativeModeTab.SML_ITEM);
@@ -32,9 +37,9 @@ public class ModBlocks {
             () -> new RicottaCheeseWheelBlock(BlockBehaviour.Properties.of(Material.CAKE)
                     .strength(0.3f).noOcclusion()), ModCreativeModeTab.SML_FOOD_TAB);
 
-    public static final RegistryObject<Block> PUKIS_SKULL = registerBlock("pukis_skull",
-            () -> new PukisSkullBlock(BlockBehaviour.Properties.of(Material.DECORATION)
-                    .strength(0.5f).noOcclusion()), ModCreativeModeTab.SML_ITEM);
+    public static final RegistryObject<Block> SIGIL = registerBlock("sigil",
+            () -> new SigilBlock(BlockBehaviour.Properties.of(Material.STONE)
+                    .strength(0.1f)), ModCreativeModeTab.SML_ITEM);
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

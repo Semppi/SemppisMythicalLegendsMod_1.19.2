@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "semppis_mythical_legends_mod:cooked_fish"
+    },
+    {
+      "tag": "semppis_mythical_legends_mod:cooked_fish"
+    },
+    {
+      "tag": "semppis_mythical_legends_mod:cooked_fish"
+    },
+    {
+      "item": "semppis_mythical_legends_mod:ricotta_cheese"
+    },
+    {
+      "item": "minecraft:dried_kelp"
+    },
+    {
+      "item": "minecraft:dried_kelp"
+    },
+    {
+      "item": "minecraft:dried_kelp"
+    }
+  ],
+  "result": {
+    "item": "semppis_mythical_legends_mod:cooked_fishy_kelp_treat"
+  }
+}

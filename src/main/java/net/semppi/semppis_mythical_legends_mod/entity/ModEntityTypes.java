@@ -43,6 +43,24 @@ public class ModEntityTypes {
                             .sized(0.4f, 0.6f)
                             .build(new ResourceLocation(SemppisMythicalLegendsMod.MOD_ID, "mandrake").toString()));
 
+    public static final RegistryObject<EntityType<WendigoEntity>> WENDIGO =
+            ENTITY_TYPES.register("wendigo",
+                    () -> EntityType.Builder.of(WendigoEntity::new, MobCategory.CREATURE)
+                            .sized(0.6f, 2.9f)
+                            .build(new ResourceLocation(SemppisMythicalLegendsMod.MOD_ID, "wendigo").toString()));
+
+    public static final RegistryObject<EntityType<LovelandFrogmanEntity>> LOVELAND_FROGMAN =
+            ENTITY_TYPES.register("loveland_frogman",
+                    () -> EntityType.Builder.of(LovelandFrogmanEntity::new, MobCategory.CREATURE)
+                            .sized(0.5f, 1.0f)
+                            .build(new ResourceLocation(SemppisMythicalLegendsMod.MOD_ID, "loveland_frogman").toString()));
+
+    public static final RegistryObject<EntityType<MalphasEntity>> MALPHAS =
+            ENTITY_TYPES.register("malphas",
+                    () -> EntityType.Builder.of(MalphasEntity::new, MobCategory.CREATURE)
+                            .sized(0.6f, 2.9f)
+                            .build(new ResourceLocation(SemppisMythicalLegendsMod.MOD_ID, "malphas").toString()));
+
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
     }

@@ -23,6 +23,9 @@ public class ModEvents {
             event.put(ModEntityTypes.BEHEMOTH.get(), BehemothEntity.setAttributes());
             event.put(ModEntityTypes.PUKIS.get(), PukisEntity.setAttributes());
             event.put(ModEntityTypes.MANDRAKE.get(), MandrakeEntity.setAttributes());
+            event.put(ModEntityTypes.WENDIGO.get(), WendigoEntity.setAttributes());
+            event.put(ModEntityTypes.LOVELAND_FROGMAN.get(), LovelandFrogmanEntity.setAttributes());
+            event.put(ModEntityTypes.MALPHAS.get(), MalphasEntity.setAttributes());
         }
     }
 }

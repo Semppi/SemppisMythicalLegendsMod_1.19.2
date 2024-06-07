@@ -11,6 +11,7 @@ import net.minecraft.world.entity.NeutralMob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
+import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.IronGolem;
@@ -20,6 +21,7 @@ import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -30,43 +32,13 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import java.util.UUID;
 
-public class BehemothEntity extends Animal implements IAnimatable, NeutralMob {
-    /// ToDo: Fix the deprecated function
+public class BehemothEntity extends Animal implements IAnimatable {
+    /// ToDo: Fix the deprecated functions
     private AnimationFactory factory = new AnimationFactory(this);
 
-    @Override
-    public AgeableMob getBreedOffspring(ServerLevel world, AgeableMob ageableMob) {
-        // Implement the logic to create offspring of the satyr entity when breeding.
-        // Return the newly created offspring entity based on your requirements.
-        return null;
-    }
-    @Override
-    public void startPersistentAngerTimer() {
-        // Do nothing
-    }
-
-    @Override
-    public int getRemainingPersistentAngerTime() {
-        return 0;
-    }
-
-    @Override
-    public void setRemainingPersistentAngerTime(int time) {
-        // Do nothing
-    }
-
-    @Override
-    public UUID getPersistentAngerTarget() {
-        return null;
-    }
-
-    @Override
-    public void setPersistentAngerTarget(UUID target) {
-        // Do nothing
-    }
-
-    public BehemothEntity(EntityType<? extends Animal> pEntityType, Level pLevel) {
-        super(pEntityType, pLevel);
+    public BehemothEntity(EntityType<? extends Animal> entityType, Level level) {
+        super(entityType, level);
+        this.maxUpStep = 10.5F;
     }
 
     public static AttributeSupplier setAttributes() {
@@ -78,7 +50,6 @@ public class BehemothEntity extends Animal implements IAnimatable, NeutralMob {
                 .add(Attributes.KNOCKBACK_RESISTANCE, 0.95D)
                 .build();
     }
-    /// ToDo: Have the behemoth entity defend it's self and attack back if they are attacked by an entity
 
     @Override
     protected void registerGoals() {
@@ -87,11 +58,24 @@ public class BehemothEntity extends Animal implements IAnimatable, NeutralMob {
         this.goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 1.0D));
         this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
 
+        this.targetSelector.addGoal(1, (new HurtByTargetGoal(this)));
         this.targetSelector.addGoal(2, new CustomNearestAttackableTargetGoal<>(this, Player.class, true, false, 2));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, AbstractVillager.class, false));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Warden.class, true));
         this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, Pillager.class, true));
         this.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(this, IronGolem.class, true));
+    }
+
+    @Override
+    public boolean causeFallDamage(float fallDistance, float damageMultiplier, DamageSource source) {
+        // Prevent fall damage entirely
+        return false;
+    }
+
+    @Nullable
+    @Override
+    public AgeableMob getBreedOffspring(ServerLevel p_146743_, AgeableMob p_146744_) {
+        return null;
     }
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {

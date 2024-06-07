@@ -17,7 +17,7 @@ public class SatyrModel extends AnimatedGeoModel<SatyrEntity> {
 
     @Override
     public ResourceLocation getTextureResource(SatyrEntity entity) {
-        SatyrVariant variant = entity.getSatyrVariant();
+        SatyrVariant variant = entity.getVariant();
         String variantName = variant.name().toLowerCase();
         return new ResourceLocation(SemppisMythicalLegendsMod.MOD_ID, "textures/entity/satyr_" + variantName + ".png");
     }
@@ -37,6 +37,20 @@ public class SatyrModel extends AnimatedGeoModel<SatyrEntity> {
         if (head != null) {
             head.setRotationX(extraData.headPitch * ((float) Math.PI / 180F));
             head.setRotationY(extraData.netHeadYaw * ((float) Math.PI / 180F));
+        }
+        // Accessing bones by name
+        IBone grownHorns = this.getAnimationProcessor().getBone("grown_horns");
+        IBone babyHorns = this.getAnimationProcessor().getBone("baby_horns");
+        IBone grownHair = this.getAnimationProcessor().getBone("grown_hair");
+
+        // Determine if the entity is a baby
+        boolean isBaby = entity.isBaby();
+
+        // Show or hide bones based on the entity's age
+        if (grownHorns != null && babyHorns != null && grownHair != null) {
+            grownHorns.setHidden(isBaby);  // Hide grown horns if baby
+            babyHorns.setHidden(!isBaby);  // Hide baby horns if not baby
+            grownHair.setHidden(isBaby);   // Hide grown hair if baby
         }
     }
 }

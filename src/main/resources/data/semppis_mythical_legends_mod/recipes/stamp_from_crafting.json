@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "S": {
+      "tag": "minecraft:wooden_slabs"
+    },
+    "W": {
+      "tag": "minecraft:wool"
+    }
+  },
+  "pattern": [
+    "S",
+    "W"
+  ],
+  "result": {
+    "item": "semppis_mythical_legends_mod:stamp",
+    "count": 6
+  }
+}

@@ -3,6 +3,9 @@ package net.semppi.semppis_mythical_legends_mod.entity.client;
 import net.minecraft.resources.ResourceLocation;
 import net.semppi.semppis_mythical_legends_mod.SemppisMythicalLegendsMod;
 import net.semppi.semppis_mythical_legends_mod.entity.custom.PukisEntity;
+import net.semppi.semppis_mythical_legends_mod.entity.custom.SatyrEntity;
+import net.semppi.semppis_mythical_legends_mod.entity.variant.PukisVariant;
+import net.semppi.semppis_mythical_legends_mod.entity.variant.SatyrVariant;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.processor.IBone;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
@@ -15,8 +18,10 @@ public class PukisModel extends AnimatedGeoModel<PukisEntity> {
     }
 
     @Override
-    public ResourceLocation getTextureResource(PukisEntity object) {
-        return new ResourceLocation(SemppisMythicalLegendsMod.MOD_ID, "textures/entity/pukis_dark.png");
+    public ResourceLocation getTextureResource(PukisEntity entity) {
+        PukisVariant variant = entity.getVariant();
+        String variantName = variant.name().toLowerCase();
+        return new ResourceLocation(SemppisMythicalLegendsMod.MOD_ID, "textures/entity/pukis_" + variantName + ".png");
     }
 
     @Override
@@ -32,6 +37,7 @@ public class PukisModel extends AnimatedGeoModel<PukisEntity> {
 
         EntityModelData extraData = (EntityModelData) customPredicate.getExtraDataOfType(EntityModelData.class).get(0);
         if (head != null) {
+            head.setRotationX(extraData.headPitch * ((float) Math.PI / 180F));
             head.setRotationY(extraData.netHeadYaw * ((float) Math.PI / 180F));
         }
     }
